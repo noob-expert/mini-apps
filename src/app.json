@@ -1,0 +1,29 @@
+{
+    "pages": [
+        "pages/index/main",
+        "pages/detail/main",
+        "pages/search/main",
+        "pages/profile/main"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#009475",
+        "navigationBarTitleText": "商城",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "list":[
+            {
+                "pagePath": "pages/detail/main",
+                "text": "图书列表"
+            },
+            {
+                "pagePath": "pages/search/main",
+                "text": "搜索图书"
+            },            {
+                "pagePath": "pages/search/main",
+                "text": "个人中心"
+            }
+        ]
+    }
+}
