@@ -1,105 +1,101 @@
 <template>
-  <div class="detail-container">
-    <swiper
-      :indicator-dots="!isShow"
-      autoplay
-      circular
-      indicator-color="pink"
-      indicator-active-color="green"
-    >
-      <swiper-item v-for="(item,index) in dataTitle" :key="index">
-        <img :src="item.image" alt="" />
-      </swiper-item>
-    </swiper>
-    <div class="detail-content">
-      <div class="nav">
-        <span class="nav-text">全部商品</span>
-        <span class="nav-array">></span>
+  <div class="books-detail">
+    <div class="booksinfo">
+      <h1>{{dataItem.title}}</h1>
+      <img :src="dataItem.image" alt="" />
+      <div class="info">
+        <p>作者:{{dataItem.author}}</p>
+        <p>出版社:{{dataItem.publisher}}</p>
+        <p>出版日期:{{dataItem.pubdate}}</p>
+        <p>定价:{{dataItem.price}}</p>
       </div>
-      <div class="list">
-        <div class="list-content" v-for="(item,index) in dataArray"
-        :key="index">
-          <img :src="item.image" alt="" />
-          <p>{{item.title}}</p>
-          <p>{{item.author}}</p>
-        </div>
-      </div>
+    </div>
+    <button class="share"
+    type="primary"
+    >分享给好友</button>
+    <div class="brief">
+      <article>
+        <h2>作者简介</h2>
+        <section>{{dataItem.author_intro}}</section>
+      </article>
+      <article>
+        <h2>内容简介</h2>
+        <section>{{dataItem.summary}}</section>
+      </article>
     </div>
   </div>
 </template>
 
 <script>
-import datas from "./datas/data.json"
 export default {
     data(){
-          return{
-            dataArray:datas,
-            dataTitle:[]
+        return{
+            dataItem:{}
         }
     },
-    // 取前4个图像方法1
-    beforeMount(){
-        for(let i=0;i<4;i++){
-            this.dataTitle.push(datas[i])
-        }
-    },
-    // 取前4个图像方法2
-    computed:{
-        dataTitle2(){
-            return this.dataArray.slice(0,4)
-        }
+    mounted(){
+        this.dataItem=JSON.parse(this.$mp.query.dataItem)
+        wx.setNavigationBarTitle({
+            title: this.dataItem.title,
+            success: function(res) {
+                // success
+            }
+        })
     }
-
 };
 </script>
 
 <style>
-.detail-container {
-  width: 100%;
-  height: 400rpx;
-}
-.detail-container swiper {
-  width: 100%;
-  height: 100%;
-}
-.detail-container img {
-  width: 100%;
-  height: 100%;
-}
-.detail-content{
-    width:100%
-}
-.nav {
-  line-height: 50rpx;
-  display: flex;
-  justify-content: space-between;
-  padding: 5rpx;
-}
-.nav .nav-array {
-  color: green;
-}
-.list{
+.books-detail{
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
 }
-.list .list-content{
-    box-sizing: border-box;
-    width: 50%;
+.booksinfo{
+    width:100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    border-bottom:1px solid #eee;
-    /* border-ri:1px solid #eee; */
-    font-size: 30rpx;
-    padding: 20rpx;
+    justify-content: space-between;
+    /* align-items: center; */
 }
-.list .list-content:nth-child(2n+1){
-    border-right:1px solid #eee ;
+.booksinfo h1{
+    font-size: 40rpx;
+    font-weight: bold;
+    margin:20rpx 0;
+    text-align: center;
 }
-.list .list-content image{
-    width: 200rpx;
-    height: 200rpx;
+.books-detail img{
+    width: 70%;
+    height: 700rpx;
+    /* 设置弹性盒布局后，子元素都被视为块元素，可设置盒模型 */
+    margin-left: 15%;
 }
+.booksinfo .info{
+    font-size:30rpx;
+    margin-left: 15%;
+}
+.booksinfo .info p{
+    margin:15rpx 0;
+    line-height: 40rpx;
+}
+.share{
+    width:300rpx;
+    line-height: 60rpx;
+    margin:10rpx auto
+}
+.brief{
+    font-size: 30rpx; 
+    margin:30rpx
+}
+ .brief h2{
+    font-weight: bold;
+    color: #009475;
+    text-align: center;
+}
+.brief article{
+    margin:15rpx 0;
+}
+.brief section{
+    text-indent:30rpx;
+    /* white-space: normal; */
+}
+
 </style>

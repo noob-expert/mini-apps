@@ -1,6 +1,7 @@
 {
     "pages": [
         "pages/index/main",
+        "pages/list/main",
         "pages/detail/main",
         "pages/search/main",
         "pages/profile/main"
@@ -14,7 +15,7 @@
     "tabBar": {
         "list":[
             {
-                "pagePath": "pages/detail/main",
+                "pagePath": "pages/list/main",
                 "text": "图书列表"
             },
             {

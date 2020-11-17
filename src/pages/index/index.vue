@@ -47,7 +47,7 @@ export default {
         // navigateTo无法跳转tab界面，需要修改为switchtab
         wx.switchTab({
           // 跳转时的路径要选择到根路径下，与在app.json中不同
-          url: '/pages/detail/main',
+          url: '/pages/list/main',
           success: function(res){
             // success
           },
