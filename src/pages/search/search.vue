@@ -1,15 +1,80 @@
 <template>
-  <div>
-      搜索中心
+  <div class="search-container">
+      <div class="search">
+        <input type="text" name="" id="" placeholder="书中自有黄金屋"
+        focus placeholder-class="searchbox" confirm-type="send"
+        @input="inputvalue" :value="value" @confirm="inputconfirm">
+        <div class="clear" v-if="value" @click="clearcontent">x</div>
+      </div>
+      <book-detail :bookslist="booksArray"></book-detail>
   </div>
 </template>
 
 <script>
+import bookDetail from "../listdetail/listdetail"
 export default {
-
+  data(){
+    return{
+      value:'',
+      booksArray:[]
+    }
+  },
+  components:{
+    bookDetail
+  },
+  methods:{
+    // 键盘输入时触发，这里利用原生小程序的事件是错误的；需要再补充v-bind:value="value"；
+    // 事实上，即v-model的原理：v-on绑定事件，然后v-bind绑定属性
+    inputvalue(e){
+      this.value=e.mp.detail.value
+      if(!this.value){
+        this.booksArray=[]
+      }
+    },
+    inputconfirm(e){
+      let data={req:e.mp.detail.value}
+      wx.request({
+        url: 'http://localhost:3000/searchBooks',
+        data,
+        method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+        // header: {}, // 设置请求的 header
+        success: (res)=>{
+          // 这里找不到this，因为是普通函数，直接指向request返回的promise
+          this.booksArray=res.data
+        }
+      })
+    },
+    clearcontent(){
+      this.value='';
+      this.booksArray=[]
+    }
+  }
 }
 </script>
 
 <style>
+.search{
+  width: 80%;
+  height: 80rpx;
+  margin:auto;
+  border-bottom:2rpx solid #009475;
+  position: relative;
+}
+.search input{
+  width: 100%;
+  height: 100%;
+  font-size:30rpx
+}
+.search .searchbox{
+  text-align: center;
+  font-size:30rpx;
+  color:#009475
+}
+.search .clear{
+  position: absolute;
+  right: 10rpx;
+  bottom: 15rpx;
+  z-index: 999;
+}
 
 </style>

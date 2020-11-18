@@ -4,6 +4,7 @@
       class="listdetail-container"
       v-for="(item, index) in bookslist"
       :key="index"
+      @click="TodetailClick(item)"
     >
       <img :src="item.image" alt="" />
       <div class="books-info">
@@ -23,9 +24,29 @@ export default {
       bookslist: [],
     };
   },
-  mounted() {
-    this.bookslist = JSON.parse(this.$mp.query.bookslist);
+  props:{
+    bookslist:{
+      type:Array,
+      default(){
+        return []
+      }
+    }
   },
+  mounted() {
+    // this.$mp只针对页面跳转时才会传递该参数
+    // 因为组件被search也复用，返回的this值不同，所以this.$mp不一定存在，此处要做判断
+    if(this.$mp){
+    this.bookslist = JSON.parse(this.$mp.query.bookslist);
+    }
+    console.log(this.bookslist);
+  },
+  methods:{
+    TodetailClick(dataItem){
+        wx.navigateTo({
+          url: '/pages/detail/main?dataItem='+ JSON.stringify(dataItem)
+        })
+    }
+  }
 };
 </script>
 

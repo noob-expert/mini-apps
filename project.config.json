@@ -1,7 +1,7 @@
 {
   "description": "项目配置文件。",
   "setting": {
-    "urlCheck": true,
+    "urlCheck": false,
     "es6": false,
     "enhance": false,
     "postcss": true,
@@ -66,6 +66,12 @@
         {
           "name": "pages/listdetail/main",
           "pathName": "pages/listdetail/main",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/search/main",
+          "pathName": "pages/search/main",
           "scene": null
         }
       ]

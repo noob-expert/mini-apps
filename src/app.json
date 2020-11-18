@@ -23,7 +23,7 @@
                 "pagePath": "pages/search/main",
                 "text": "搜索图书"
             },            {
-                "pagePath": "pages/search/main",
+                "pagePath": "pages/profile/main",
                 "text": "个人中心"
             }
         ]

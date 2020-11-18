@@ -14,7 +14,7 @@
     <div class="detail-content">
       <div class="nav">
         <span class="nav-text">全部商品</span>
-        <span class="nav-array" @click="arrayClick(dataArray)">></span>
+        <span class="nav-array" @click="arrayClick(dataArray)">>></span>
       </div>
       <div class="list">
         <div class="list-content" v-for="(item,index) in dataArray"
