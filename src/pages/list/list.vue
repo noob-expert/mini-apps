@@ -14,7 +14,7 @@
     <div class="detail-content">
       <div class="nav">
         <span class="nav-text">全部商品</span>
-        <span class="nav-array">></span>
+        <span class="nav-array" @click="arrayClick(dataArray)">></span>
       </div>
       <div class="list">
         <div class="list-content" v-for="(item,index) in dataArray"
@@ -53,6 +53,11 @@ export default {
       toDetail(dataItem){
         wx.navigateTo({
           url: '/pages/detail/main?dataItem='+ JSON.stringify(dataItem)
+        })
+      },
+      arrayClick(bookslist){
+        wx.navigateTo({
+          url: '/pages/listdetail/main?bookslist='+JSON.stringify(bookslist)
         })
       }
     }

@@ -60,6 +60,12 @@
         {
           "name": "pages/list/main",
           "pathName": "pages/list/main",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/listdetail/main",
+          "pathName": "pages/listdetail/main",
           "scene": null
         }
       ]

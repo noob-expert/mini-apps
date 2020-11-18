@@ -12,6 +12,7 @@
     </div>
     <button class="share"
     type="primary"
+    open-type="share"
     >分享给好友</button>
     <div class="brief">
       <article>
@@ -41,6 +42,12 @@ export default {
                 // success
             }
         })
+    },
+    onShareAppMessage(){
+        return{
+        title:"煲仔饭商城",
+        path:"/pages/index/main"
+        }
     }
 };
 </script>
