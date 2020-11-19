@@ -2,6 +2,7 @@
   <div class="listdetail">
     <div
       class="listdetail-container"
+      v-if="bookslist"
       v-for="(item, index) in bookslist"
       :key="index"
       @click="TodetailClick(item)"
@@ -38,7 +39,6 @@ export default {
     if(this.$mp){
     this.bookslist = JSON.parse(this.$mp.query.bookslist);
     }
-    console.log(this.bookslist);
   },
   methods:{
     TodetailClick(dataItem){

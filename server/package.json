@@ -1,0 +1,20 @@
+{
+  "name": "booksmall-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serverkoa": "node server-koa.js",
+    "server": "node server.js",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "koa": "^2.13.0",
+    "koa-router": "^10.0.0",
+    "nodemon": "^2.0.6"
+  }
+}

@@ -24,20 +24,6 @@ export default {
       user:{}
     }
   },
-  mounted(){
-    // 已登录状态，重新进入页面时初始化信息
-    wx.getUserInfo({
-      success: function(res){
-        this.user=res.userInfo
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
-      }
-    })
-  },
   methods: {
     getuserinfo(res) {
       this.user=res.mp.detail.userInfo;
@@ -46,13 +32,8 @@ export default {
     scancode(){
       wx.scanCode({
         onlyFromCamera:true,
-        success: function(res){
-        },
-        fail: function() {
-          // fail
-        },
-        complete: function() {
-          // complete
+        success: function() {
+          
         }
       })
     }

@@ -1,41 +1,20 @@
-let Koa=require('koa');
-let KoaRouter=require("koa-router");
+// express框架版本--自行搭建
 
-// 生成应用及路由器实例
-const app=new Koa();
-const router=new KoaRouter()
+const express=require('express')
 
-// 核心代码.koa中使用ctx
-router.get("/",(ctx,next)=>{
-    // 1.获取请求的参数
-
-    // 2.根据请求的地址和参数处理数据
-
-    // 3. 响应数据
-    ctx.body="服务器返回的数据"
+// 创建服务应用程序，及路由
+const app=express()
+// 初始界面
+app.get("/",(req,res)=>{
+    res.send("加载成功")
 })
 
-// 搜索图书的接口
-
-// 引入数据
-let datas=require("./datas/data.json")
-router.get("/searchBooks",(ctx,next)=>{
-    // 1.获取请求的参数
-    let req=ctx.query.req;
-    console.log("获取请求参数",req);
-    // 2.根据请求的地址和参数处理数据
-    let booksArr=datas
-    // 3. 响应数据
-    ctx.body=booksArr
-})
+// 引入及加载路由
+const router=require('./router')
+app.use(router)
 
 
-// 使用路由器及路由
-app
-.use(router.routes()) //声明使用路由
-.use(router.allowedMethods) //允许使用路由的方法
-
-// 监听端口
-app.listen("3000",()=>{
-    console.log("服务器启动成功");
+// 监听
+app.listen("3001",()=>{
+    console.log("server is running");
 })
