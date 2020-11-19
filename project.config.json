@@ -72,6 +72,12 @@
         {
           "name": "pages/search/main",
           "pathName": "pages/search/main",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/profile/main",
+          "pathName": "pages/profile/main",
           "scene": null
         }
       ]

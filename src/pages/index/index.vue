@@ -3,6 +3,7 @@
     <swiper
       :indicator-dots="!isShow"
       autoplay
+      circular
       indicator-color="pink"
       indicator-active-color="green"
       @change="itemChange"

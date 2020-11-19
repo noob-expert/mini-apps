@@ -14,7 +14,7 @@
     <div class="detail-content">
       <div class="nav">
         <span class="nav-text">全部商品</span>
-        <span class="nav-array" @click="arrayClick(dataArray)">>></span>
+        <span class="nav-array" @click="arrayClick(dataArray)">更多></span>
       </div>
       <div class="list">
         <div class="list-content" v-for="(item,index) in dataArray"
@@ -87,9 +87,9 @@ export default {
   justify-content: space-between;
   padding: 5rpx;
 }
-.nav .nav-array {
-  color: green;
-}
+/* .nav .nav-array {
+  color: green; 
+} */
 .list{
     width: 100%;
     display: flex;
