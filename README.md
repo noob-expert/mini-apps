@@ -1,7 +1,7 @@
 # booksmall
 
 > A Mpvue project
-> 个人练习微信小程序书城项目，同时通过nodejs+express简单搭建服务器后台。实现搜索功能
+> 个人练习微信小程序书城项目，同时通过nodejs+express简单搭建服务器后台,实现搜索功能
 
 ## Build Setup
 
